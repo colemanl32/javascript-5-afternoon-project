@@ -101,23 +101,25 @@ class ProgressiveManager extends Manager{
   }
   
   hire(employee){
-    if(0 <= this.reports.length <= 2){
+    this.reports.push(employee)
+    if(this.reports.length > 0 && this.reports.length <= 3){
       this.title = 'Barely Manager'
     }
-    if(3 <= this.reports.length <= 9){
+    else if(this.reports.length >= 4 && this.reports.length <= 10){
       this.title = 'Mostly Manager'
     }
-    if(10 <= this.reports.length <= 49){
+    else if(this.reports.length >= 11 && this.reports.length <= 50){
       this.title = 'Manager'
     }
-    if(50 <= this.reports.length <= 99){
+    else if(this.reports.length >= 51 && this.reports.length <= 100){
       this.title = 'Manager Plus'
     }
-    if(this.reports.length >= 100){
+    else if(this.reports.length >= 101){
       this.title = 'Bestest Manager'
     }
   }
   fire(index){
+    this.reports.splice(index, 1)
     this.bonus += 100
   }
 }
@@ -147,6 +149,25 @@ class ProgressiveManager extends Manager{
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine{
+  widgets_made_count = 0
+  wear_and_tear_count = 0
+  needs_reboot = false
+
+  makeWidgets(num){
+    this.widgets_made_count += num
+    
+  }
+  fixMachine(){
+    this.needs_reboot === true
+  }
+  reboot(){
+    return function(){
+      this.wear_and_tear_count -= 10
+      this.needs_reboot === false
+    }
+  }
+}
+
 
 
