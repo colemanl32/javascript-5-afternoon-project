@@ -210,9 +210,13 @@ function secretNumber() {
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000);
+    const memoryCloser = () => {
+      let count = i
+      setTimeout(function() {
+        console.log(count);
+      }, i * 1000);
+    }
+    memoryCloser()
   }
 }
 timeOutCounter();
